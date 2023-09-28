@@ -69,7 +69,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```bash
-  git clone https://github.com/tajulafreen/Blog_app.git
+  git clone https://github.com/tajulafreen/Blog-app.git
 ```
 
 ### Install
@@ -111,7 +111,7 @@ it will install the required gemfile for running the project
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/tajulafreen/Blog_app/issues).
+Feel free to check the [issues page](https://github.com/tajulafreen/Blog-app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
