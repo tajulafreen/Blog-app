@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
   it 'returns recent posts' do
     user = User.create(name: 'Emma', posts_counter: 0)
 
-
     post1 = user.posts.create(title: 'Post 1', comments_counter: 0, likes_counter: 0)
     post2 = user.posts.create(title: 'Post 2', comments_counter: 0, likes_counter: 0)
 
