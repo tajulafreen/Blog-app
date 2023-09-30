@@ -34,14 +34,11 @@ RSpec.describe Post, type: :model do
 
   it 'returns recent comments' do
     user = User.create(name: 'David', posts_counter: 0)
-    post = user.posts.create(title: 'Recent Comments Test', comments_counter: 0, likes_counter: 0)
-
-  
-    comment1 = post.comments.create(user_id: user.id, text: 'Comment 1')
-    comment2 = post.comments.create(user_id: user.id, text: 'Comment 2')
-
+    post = Post.create(title: 'Sample Post', author_id: user.id, comments_counter: 0, likes_counter: 0)
+    comment1 = Comment.create(author_id: user.id, post_id: post.id, text: 'Comment 1', created_at: Time.now)
+    comment2 = Comment.create(author_id: user.id, post_id: post.id, text: 'Comment 2', created_at: 1.day.ago)
     recent_comments = post.recent_comments
 
-    expect(recent_comments).to eq([comment2, comment1]) 
+    expect(recent_comments).to eq([comment1, comment2])
   end
 end
