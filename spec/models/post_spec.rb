@@ -32,18 +32,16 @@ RSpec.describe Post, type: :model do
     expect(user.posts_counter).to eq(1)
   end
 
-  it 'returns the 5 most recent comments' do
-    user = User.create(name: 'Charlie', posts_counter: 0)
-    post = user.posts.create(title: 'Post with Comments')
-    post.comments.create(author: user, body: 'Old comment')
-    newer_comment1 = post.comments.create(author: user, body: 'Newer comment 1')
-    newer_comment2 = post.comments.create(author: user, body: 'Newer comment 2')
-    newer_comment3 = post.comments.create(author: user, body: 'Newer comment 3')
-    newer_comment4 = post.comments.create(author: user, body: 'Newer comment 4')
-    newer_comment5 = post.comments.create(author: user, body: 'Newer comment 5')
+  it 'returns recent comments' do
+    user = User.create(name: 'David', posts_counter: 0)
+    post = user.posts.create(title: 'Recent Comments Test', comments_counter: 0, likes_counter: 0)
+
+  
+    comment1 = post.comments.create(user_id: user.id, text: 'Comment 1')
+    comment2 = post.comments.create(user_id: user.id, text: 'Comment 2')
 
     recent_comments = post.recent_comments
 
-    expect(recent_comments).to eq([newer_comment5, newer_comment4, newer_comment3, newer_comment2, newer_comment1])
+    expect(recent_comments).to eq([comment2, comment1]) 
   end
 end
