@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment created successfully'
     else
       flash[:error] = 'Something went wrong.'
-      puts @comment.errors.full_messages 
+      puts @comment.errors.full_messages
       render :new
     end
 
