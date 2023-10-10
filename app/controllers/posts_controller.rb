@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   def show
     logger.debug(params)
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    # @comments = @post.comments
+    @post = @user.posts.includes(:comments).find(params[:id])
+    @comments = @post.comments
   end
 
   def new
