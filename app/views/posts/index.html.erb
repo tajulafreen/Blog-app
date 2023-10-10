@@ -13,11 +13,12 @@
         </div>
         <div class="row">
             <div class="col-lg-12 border border-dark">
-                <% post.recent_comments.each do |comment| %>
+                <% post.comments.each do |comment| %>
                     <p class=""><%= comment.author.name %>: <%= comment.text %> </p>
                 <% end %>
 
             </div>
         </div>
     <% end %>
+    <div class="pagination">pagination</div>
 </section>

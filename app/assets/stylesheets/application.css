@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ img {
+    border: 1px solid #ccc;
+  }
+  
+  .pagination {
+    display: none;
+  }
