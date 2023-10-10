@@ -74,6 +74,5 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_current_path(user_post_path(user1, post1))
       expect(page).to have_content(post1.title)
     end
-
   end
 end

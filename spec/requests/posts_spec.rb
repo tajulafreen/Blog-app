@@ -35,7 +35,7 @@ RSpec.describe 'Posts', type: :request do
         posts_counter: 1
       )
     end
-    
+
     let!(:post) do
       Post.create(
         author: user,
