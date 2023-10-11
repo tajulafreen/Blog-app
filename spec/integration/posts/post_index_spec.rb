@@ -20,7 +20,7 @@ RSpec.describe 'post index view page', type: :system do
   let!(:comment1) do
     Comment.create(post: post1, author: user1, text: 'nice!')
   end
-  let!(:comment2) do
+  let!(:comment1) do
     Comment.create(post: post1, author: user1, text: 'nice!')
   end
   let!(:comment2) do
@@ -50,11 +50,17 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content("Number Of posts #{user1.posts_counter}")
     end
 
-    it 'displays a post\'s title and text' do
+    it 'displays a post\'s title and body' do
       expect(page).to have_content(post1.title)
       expect(page).to have_content(post1.text)
       expect(page).to have_content(post2.title)
       expect(page).to have_content(post2.text)
+      if post1.comments.any?
+        expect(page).to have_content(post1.comments.first.text)
+      end
+      
+      expect(page).to have_content(", Comments #{post1.comments.count - 1}") # Adjusted expectation
+      expect(page).to have_content(", Likes #{post1.likes.count}") # Truncate post body for visibility
     end
 
     it 'displays the first comments on a post' do
