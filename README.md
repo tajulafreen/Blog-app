@@ -95,6 +95,12 @@ it will install the required gemfile for running the project
 - GitHub: [Tajul Afreen](https://github.com/tajulafreen)
 - LinkedIn: [Tajul Afreen](https://www.linkedin.com/in/tajul-afreen/)
 
+👤 Md. Porag Sarkar
+- GitHub: [@porag-m06](https://github.com/porag-m06)
+- Twitter: [@twitterhandle](https://twitter.com/rarebird06)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/muhammad-porag-nsu-cse/)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->

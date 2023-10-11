@@ -29,3 +29,6 @@ node_modules/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore the database.yml file as we have different password setup on different machine
+/config/database.yml
