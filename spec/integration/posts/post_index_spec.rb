@@ -55,10 +55,8 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_content(post1.text)
       expect(page).to have_content(post2.title)
       expect(page).to have_content(post2.text)
-      if post1.comments.any?
-        expect(page).to have_content(post1.comments.first.text)
-      end
-      
+      expect(page).to have_content(post1.comments.first.text) if post1.comments.any?
+
       expect(page).to have_content(", Comments #{post1.comments.count - 1}") # Adjusted expectation
       expect(page).to have_content(", Likes #{post1.likes.count}") # Truncate post body for visibility
     end
@@ -85,9 +83,8 @@ RSpec.describe 'post index view page', type: :system do
       # Set the user's posts_counter to a value that exceeds the page limit
       user1.update(posts_counter: 5)
 
-    #   visit user_path(user1)
-    expect(page).to have_selector('.pagination', visible: true)
-
+      #   visit user_path(user1)
+      expect(page).to have_selector('.pagination', visible: true)
     end
   end
 end
