@@ -74,5 +74,14 @@ RSpec.describe 'post index view page', type: :system do
       expect(page).to have_current_path(user_post_path(user1, post1))
       expect(page).to have_content(post1.title)
     end
+
+    it 'displays a section for pagination if there are more posts' do
+      # Set the user's posts_counter to a value that exceeds the page limit
+      user1.update(posts_counter: 5)
+
+    #   visit user_path(user1)
+    expect(page).to have_selector('.pagination', visible: true)
+
+    end
   end
 end
