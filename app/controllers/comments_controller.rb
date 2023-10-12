@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @user = Post.find(params[:user_id])
     @post = Post.find(params[:post_id])
