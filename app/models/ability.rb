@@ -9,10 +9,9 @@ class Ability
     if user.admin?
       can :manage, :all # Admins can manage all resources
     else
+      can :manage, Post, author: user
+      can :manage, Comment, author: user
       can :read, :all
-      can :create, Post
-      can :destroy, Post, author_id: user.id
-      can :destroy, Comment, author_id: user.id
 
     end
   end
