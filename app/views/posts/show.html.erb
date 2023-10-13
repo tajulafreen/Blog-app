@@ -2,19 +2,40 @@
  <%= render partial: 'shared/signout' %>
     <div class="row mt-4">
         <div class="col-lg-12 border border-dark">
-            <h4 class="pt-2">'<%= @post.title %>' by <%= @user.name %></h4>
-            <p class="mt-2"><%= @post.text %></p>
-            <p class="d-flex justify-content-end">
-                <%= render partial: 'shared/like', locals: { user: @user, post: @post } %>
-            </p>
-            <p class="d-flex justify-content-end"><%= link_to "Add Comment", new_user_post_comment_path(@user, @post), class:"text-dark" %>, Comments <%= @post.comments_counter %>, Likes <%= @post.likes_counter%></p>
+<div class="row">
+                <div class="col-lg-10">
+                    <h4 class="pt-2">'<%= @post.title %>' by <%= @user.name %></h4>
+                    <p class="mt-2"><%= @post.text %></p>
+                    <p class="d-flex justify-content-end"><%= link_to "Add Comment", new_user_post_comment_path(current_user, @post), class:"text-dark" %>, Comments <%= @post.comments_counter %>, Likes <%= @post.likes_counter%></p>    
+                </div>
+                <div class="col-lg-2">
+                     <p class="d-flex justify-content-end">
+                        <%= render partial: 'shared/like', locals: { user: @user, post: @post } %>
+                    </p>
+                    <% if @post.author.id == current_user.id || current_user.admin? %>
+                        <%= button_to 'Delete Post', user_post_path(@post.author, @post), method: :delete, class: 'btn btn-danger' %>
+                    <% end %>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 border border-dark">
-            <% @comments.each do |comment| %>
-                <p class=""><%= comment.author.name %>: <%= comment.text %> </p>
-            <% end %>
+            <table class="table table-border">
+                <tbody>
+                    <% @comments.each do |comment| %>
+                        <tr>
+                            <td><%= comment.author.name %>: <%= comment.body %></td>
+                            <td>
+                                <% if can? :destroy, comment %>
+                                    <%= button_to 'Delete', user_post_comment_path(@post.author, @post, comment), method: :delete, class: 'btn btn-light text-danger btn-sm'%>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
 
         </div>
     </div>
