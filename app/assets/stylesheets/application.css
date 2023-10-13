@@ -16,3 +16,9 @@
 img {
   border: 1px solid #ccc;
 }
+
+.btn-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}

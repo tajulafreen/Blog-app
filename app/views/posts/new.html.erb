@@ -1,4 +1,5 @@
 <section class="container mt-5">
+<%= render partial: 'shared/signout' %>
   <div class="row justify-content-center align-items-center "> 
     <div class="col-6 border border-dark rounded-1  border-2 p-5">
     <h1 class="text-center">Add new post</h1>
@@ -22,8 +23,7 @@
           <%= form.label :text %>
           <%= form.text_area :text, class: 'form-control' %>
         </div>
-
-        <%= form.hidden_field :author_id, value: current_user.id %>
+<%= form.hidden_field :author_id, value: current_user.id %>
 
         <div class="form-group mt-2">
           <%= form.submit 'Create Post', class: 'btn btn-primary' %>

@@ -1,5 +1,8 @@
-<section id="body-content" class="container">
-    <%= link_to "Create New Post", new_user_post_path(current_user), class: "btn btn-primary" %>
+<section id="body-content" class="container">  
+   <%= render partial: 'shared/signout' %>
+    
+    <%= link_to "Create New Post", new_user_post_path(current_user.id), class: "btn btn-primary" %>
+    
     <% @users.each do |user| %>
         <div class="row mt-4">
             <div class="col-lg-2">

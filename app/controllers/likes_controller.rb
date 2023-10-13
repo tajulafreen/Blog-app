@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
   def create
     logger.debug(params)
     @user = User.find(params[:user_id])
