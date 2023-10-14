@@ -5,9 +5,9 @@ class Api::V1::UsersController < ApplicationController
     users = User.all
 
     if users
-      render json: { status: 'Success', message: 'Users fetched successfully', data: users }, status: :ok
+      render json: { status: 'Success!', message: 'Users fetched successfully', data: users }, status: :ok
     else
-      render json: { status: 'Error', message: 'Failed to fetch users', errors: users.errors }, status: :bad_request
+      render json: { status: 'Error!', message: 'Failed to fetch users', errors: users.errors }, status: :bad_request
     end
   end
 
