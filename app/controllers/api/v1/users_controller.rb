@@ -7,7 +7,8 @@ class Api::V1::UsersController < ApplicationController
     if users
       render json: { status: 'Success!', message: 'All the Users fetched successfully', data: users }, status: :ok
     else
-      render json: { status: 'Error!', message: 'Something went wrong! Failed to fetch users', errors: users.errors }, status: :bad_request
+      render json: { status: 'Error!', message: 'Something went wrong! Failed to fetch users', errors: users.errors },
+             status: :bad_request
     end
   end
 
@@ -21,10 +22,5 @@ class Api::V1::UsersController < ApplicationController
 
       render json: { status: 'Error', message: 'Failed to fetch user', errors: user.errors }, status: :bad_request
     end
-
   end
-
-
 end
-
-
