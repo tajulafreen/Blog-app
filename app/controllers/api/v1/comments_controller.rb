@@ -1,19 +1,18 @@
 class Api::V1::CommentsController < ApplicationController
-    protect_from_forgery with: :null_session
-  
-    def index
-      @post = Post.find(params[:post_id])
-      @comments = @post.comments
-  
-      if @comments
-        render json: { status: 'Success', message: 'Comment fetched successfully', data: @comments }, status: :ok
-      else
-        render json: { status: 'Error', message: 'No comments found!', data: @comments.errors },
-               status: :bad_request
-      end
-    end
+  protect_from_forgery with: :null_session
 
-    
+  def index
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
+
+    if @comments
+      render json: { status: 'Success', message: 'Comment fetched successfully', data: @comments }, status: :ok
+    else
+      render json: { status: 'Error', message: 'No comments found!', data: @comments.errors },
+             status: :bad_request
+    end
+  end
+
   def create
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
